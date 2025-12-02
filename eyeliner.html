@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veloute Web</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "Baskervville", serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .menu-btn {
+            width: 38px;
+            cursor: pointer;
+            filter: brightness(1.2);
+        }
+
+        /* LOGO */
+        .logo {
+            height: 38px;
+            object-fit: contain;
+            user-select: none;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -260px;
+            width: 260px;
+            height: 100vh;
+            background-image: url('assets/MENU\ 1\ \(1\).jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 30px 20px;
+            z-index: 2000;
+            transition: 0.35s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 26px;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 0;
+            color: white;
+            font-size: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            transition: 0.2s;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.18);
+            padding-left: 8px;
+        }
+
+        /* CONTENT IMAGE SECTION */
+        .carousel {
+            margin-top: 80px;
+            width: 100%;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            background: black;
+            display: block;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .menu-btn {
+                width: 32px;
+            }
+
+            .logo {
+                height: 32px;
+            }
+
+            .sidebar a {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <img src="assets/bar.jpg" class="menu-btn" id="menuBtn">
+
+
+        <img src="assets/The Veloute_logo.png" alt="Veloute Logo" class="logo">
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <h2 id="menuTitle">MENU</h2>
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="eyebrow.html">Eyebrow</a>
+        <a href="eyeliner.html">Eyeliner</a>
+        <a href="lips.html">Lips</a>
+        <a href="hairshadow.html">Hair Shadow</a>
+        <a href="lashtreatment.html">Lash Treatment</a>
+        <a href="nailservice.html">Nail Service</a>
+        <a href="skintreatment.html">Skin Treatment</a>
+        <a href="facetreatment.html">Face Treatment</a>
+        <a href="laser.html">Laser</a>
+    </div>
+
+    <div class="carousel">
+        <img src="assets/treatment sulam eyeliner.jpg">
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const sidebar = document.getElementById("sidebar");
+        const menuTitle = document.getElementById("menuTitle");
+
+        menuBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+        });
+
+        menuTitle.addEventListener("click", () => {
+            sidebar.classList.remove("open");
+        });
+
+        const menuLinks = document.querySelectorAll(".sidebar a");
+        menuLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                sidebar.classList.remove("open");
+            });
+        });
+
+        const slides = document.querySelectorAll(".carousel img");
+        let currentIndex = 0;
+
+        setInterval(() => {
+            slides[currentIndex].classList.remove("active");
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add("active");
+        }, 4000);
+    </script>
+
+</body>
+
+</html>

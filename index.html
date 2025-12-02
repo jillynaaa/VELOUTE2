@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veloute Web</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "Baskervville", serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(6px);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .menu-btn {
+            width: 38px;
+            cursor: pointer;
+        }
+
+        .logo {
+            height: 40px;
+            object-fit: contain;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -260px;
+            width: 260px;
+            height: 100%;
+            background-image: url('assets/MENU\ 1\ \(1\).jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 30px 20px;
+            transition: 0.35s ease;
+            overflow-y: auto;
+            z-index: 9999;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 0;
+            color: white;
+            font-size: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            transition: 0.25s ease;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.18);
+            padding-left: 10px;
+        }
+
+        /* CAROUSEL */
+        /* .carousel {
+            margin-top: 80px;
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            overflow: hidden;
+        }
+
+        
+        .carousel img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .carousel img.active {
+            opacity: 1;
+        }
+
+
+        .carousel {
+            margin-top: 80px;
+            position: relative;
+            width: 100%;
+            height: 95vh;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .carousel img {
+            object-position: center top;
+        } */
+
+        /* CAROUSEL */
+        .carousel {
+            margin-top: 80px;
+            position: relative;
+            width: 100%;
+            height: 95vh;
+            overflow: hidden;
+            background: #000;
+        }
+
+        /* Blurred background fill */
+        .carousel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('asset/halaman depan atas (treatment).png');
+            background-size: cover;
+            background-position: center;
+            filter: blur(22px) brightness(0.00);
+            transform: scale(1.2);
+            z-index: 0;
+        }
+
+        /* Fade bottom area */
+        .carousel::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 18vh;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 100%);
+            z-index: 2;
+        }
+
+        .carousel img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center top;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 1;
+        }
+
+        .carousel img.active {
+            opacity: 1;
+        }
+
+
+        /* STATIC IMAGES SECTION */
+        .static-images {
+            width: 100%;
+            padding: 50px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .static-images img {
+            width: 100%;
+            max-width: 1100px;
+            object-fit: contain;
+            border-radius: 6px;
+            weight: 2000px;
+        }
+
+        @media(max-width: 768px) {
+            .menu-btn {
+                width: 32px;
+            }
+
+            .logo {
+                height: 32px;
+            }
+
+            .carousel {
+                height: 60vh;
+            }
+
+            .sidebar a {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <img src="assets/bar.jpg" class="menu-btn" id="menuBtn">
+        <img src="assets/The Veloute_logo.png" alt="VELOUTE Logo" class="logo">
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <h2 id="menuTitle">MENU</h2>
+
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="eyebrow.html">Eyebrow</a>
+        <a href="eyeliner.html">Eyeliner</a>
+        <a href="lips.html">Lips</a>
+        <a href="hairshadow.html">Hair Shadow</a>
+        <a href="lashtreatment.html">Lash Treatment</a>
+        <a href="nailservice.html">Nail Service</a>
+        <a href="skintreatment.html">Skin Treatment</a>
+        <a href="facetreatment.html">Face Treatment</a>
+        <a href="laser.html">Laser</a>
+    </div>
+
+    <div class="carousel">
+        <img src="assets/halaman depan 1.jpg" class="active">
+        <img src="assets/halaman depan resize.jpg">
+    </div>
+
+    <div class="static-images">
+        <img src="assets/halaman depan bawah.jpg">
+    </div>
+
+    <script>
+
+        const menuBtn = document.getElementById("menuBtn");
+        const sidebar = document.getElementById("sidebar");
+        const menuTitle = document.getElementById("menuTitle");
+
+        menuBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+        });
+
+        menuTitle.addEventListener("click", () => {
+            sidebar.classList.remove("open");
+        });
+
+        const menuLinks = document.querySelectorAll(".sidebar a");
+        menuLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                sidebar.classList.remove("open");
+            });
+        });
+
+        const slides = document.querySelectorAll(".carousel img");
+        let currentIndex = 0;
+
+        setInterval(() => {
+            slides[currentIndex].classList.remove("active");
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add("active");
+        }, 4000);
+
+
+    </script>
+
+</body>
+
+</html>
